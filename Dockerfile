@@ -14,8 +14,9 @@ RUN pnpm install --frozen-lockfile
 # Copy source code
 COPY . .
 
-# Set environment variables for build
-ENV NEXT_PUBLIC_SALEOR_API_URL=https://saleor10.bbsb.dev/graphql/
+# Accept build argument
+ARG NEXT_PUBLIC_SALEOR_API_URL
+ENV NEXT_PUBLIC_SALEOR_API_URL=$NEXT_PUBLIC_SALEOR_API_URL
 
 # Build application
 RUN pnpm run build
